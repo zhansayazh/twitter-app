@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import './App.css'
 import logo from './assets/logo.png'
@@ -15,6 +15,7 @@ import points from './assets/3points.png'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import Tweets from './components/Tweets';
+import Search from './components/Search';
 
 
 function App() {
@@ -22,6 +23,24 @@ function App() {
   const [contentId, setContentId] = useState("For you");
   const [tweets, setTweets] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [filteredTweets, setFilteredTweets] = useState(tweets);
+  const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    if (searchValue) { 
+      setFilteredTweets([...tweets.filter(tweet => tweet.comment.includes(searchValue))])
+    } else { 
+      setFilteredTweets(tweets);
+    }
+  }, [searchValue])
+
+  useEffect(() => { // connect filteredTodos with original todos
+    setFilteredTweets(tweets);
+  }, [tweets])
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+  }
 
   const handleChange = (tab) => {
     setCurrentTab(prev => tab)
@@ -133,7 +152,7 @@ function App() {
         handleAddPost={handleAddPost}
         
       />
-      {tweets.map((tweet) => 
+      {filteredTweets.map((tweet) => 
         <Tweets
           tweet={tweet} 
           key={tweet.id}
@@ -145,6 +164,10 @@ function App() {
         />
       )}
       </div>
+      <Search 
+        searchValue={searchValue}
+        handleSearch={handleSearch}
+      />
     </div>
   )
 }

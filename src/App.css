@@ -111,17 +111,16 @@ p{
     width: 500px;
     border: none;
     outline: none;
+    font-size: 1.5rem;
 }
 .input-tweet {
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(242, 242, 242);
 }
-input::placeholder {
+.input::placeholder {
     font-size: 1.5rem;
 }
-input {
-    font-size: 1.5rem;
-}
+
 .tweet-button-icons {
     display: flex;
     flex-direction: row;
@@ -158,4 +157,28 @@ input {
     align-items: center;
     margin: 0px 20px;
     border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.Search {
+    padding: 10px 20px;
+    border-left: 1px solid rgb(242, 242, 242);
+}
+.input-search {
+    background-color: #EBEEF0;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    padding: 0px 20px;
+    border-radius: 25px;
+    width: 270px;
+}
+.input-of-search {
+    border:none;
+    outline: none;
+    background-color: #EBEEF0;
+   
+}
+.input-of-search::placeholder {
+    font-size: 15px;
 }

@@ -13,7 +13,7 @@ export default function Content({contents, currentTab, contentId, handleChangeCo
   return (
     <div>
         {currentTab === "Home" && 
-        <div className="tabs-of-content"><p>Home</p>
+        <div className="tabs-of-content"><h3 style={{fontWeight: "700"}}>Home</h3>
           <div className="contents">
           {contents.map(content => (
             <div key={content.id} className={`content ${contentId === content.name && 'active1'}`} onClick={() => handleChangeContent(content.name)}>
